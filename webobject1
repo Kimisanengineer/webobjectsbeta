@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Interactive Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  body { margin:0; background:#020617; font-family:Arial; color:#f8fafc; }
+  .container {
+    max-width:1200px;
+    aspect-ratio:16/9;
+    margin:auto;
+    background:#0f172a;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    padding:20px;
+  }
+  header { display:flex; justify-content:space-between; }
+  main { display:grid; grid-template-columns:65% 35%; gap:20px; }
+  section { background:#020617; padding:16px; border-radius:12px; overflow:auto; }
+  textarea { width:100%; height:120px; }
+  button { padding:12px 18px; border-radius:8px; border:none; cursor:pointer; }
+  footer { text-align:right; }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <strong>Case Study: Leadership Decision</strong>
+  <span>Step <span id="step">1</span> / 3</span>
+</header>
+
+<main>
+  <section id="scenario">
+    <h3>Scenario</h3>
+    <p id="scenarioText">
+      You are leading a team facing a critical deadline and limited resources.
+    </p>
+  </section>
+
+  <section>
+    <h3>Notes</h3>
+    <textarea placeholder="Take notes here..."></textarea>
+  </section>
+</main>
+
+<footer>
+  <button onclick="nextStep()">Continue</button>
+</footer>
+
+</div>
+
+<script>
+  let step = 1;
+  const scenarios = [
+    "You are leading a team facing a critical deadline and limited resources.",
+    "Two team members disagree on priorities. Productivity is slowing.",
+    "You must decide how to resolve the conflict."
+  ];
+
+  function nextStep() {
+    if (step < scenarios.length) {
+      step++;
+      document.getElementById("step").textContent = step;
+      document.getElementById("scenarioText").textContent = scenarios[step-1];
+    }
+  }
+</script>
+</body>
+</html>
